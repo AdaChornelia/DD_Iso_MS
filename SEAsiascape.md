@@ -1,4 +1,5 @@
 # SEAsiascape 
+5°N-32°N and 90°E-123°E
 
 Result for SE Asia isoscape, geostatistical model fit
 
