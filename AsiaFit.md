@@ -1,5 +1,6 @@
 # Result of Asia isoscape geostatistical model fit
 Isoscape 2
+10S-60N, and 70E-140E
 
 
 Summary
