@@ -1,4 +1,6 @@
 # Eurasia Isoscape
+10S-80N, and 20E-140E (Eurasia isoscape).
+
 
 Fitting geostatistical model summary
 
