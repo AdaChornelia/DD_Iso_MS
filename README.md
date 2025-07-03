@@ -10,7 +10,9 @@ Resources for Data Descriptor: Asia Isoscape Manuscript
 ## Files
 |No | File name | Details |
 |--|-------------|----------|
-|1 | 
+|1 | EurasiaFit.md | Summary results of geostatistical model fits for Eurasia isoscape|
+|2 | AsiaFit.md | Summary results of geostatical model fits for Asia isoscape |
+|3 | SEAsiaFit.md | Summary results of geostatistical model fits for Asia isoscape |
 
 
 ## Comparisons interpretation between models
