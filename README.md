@@ -15,6 +15,14 @@ Resources for Data Descriptor: Asia Isoscape Manuscript
 |3 | SEAsiaFit.md | Summary results of geostatistical model fits for Asia isoscape |
 
 
+## Analysis Workflow
+In summary, the workflow is: 
+1) load the aggregate data (.csv files)
+2) run geostatistical model (mixed effect model) or load.RDA file
+3) prepare elevation raster (load and aggregate)
+4) predict and conwtruct the isoscape
+5) export isoscape file to GIS and plot
+
 ## Comparisons interpretation between models
 ## Results
 
