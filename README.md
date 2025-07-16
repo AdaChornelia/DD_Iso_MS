@@ -16,28 +16,30 @@ to cite (APA format):
 ## Files
 |No | File name | Details |
 |--|-------------|----------|
-|1 | EurasiaFit.md | Summary results of geostatistical model fits for Eurasia isoscape|
-|2 | AsiaFit.md | Summary results of geostatical model fits for Asia isoscape |
-|3 | SEAsiaFit.md | Summary results of geostatistical model fits for Asia isoscape |
+|1 | EurasiaFit.md | Summary of geostatistical model fit results for the Eurasia isoscape/continental|
+|2 | AsiaFit.md | Summary of geostatistical model fit results for the Asia isoscape |
+|3 | SEAsiaFit.md | Summary of geostatistical model fit results for the Southeast Asia isoscape |
+|4 | R_Code_Asia_Isoscape.Rmd | R script |
 
 
 ## Analysis Workflow
-In summary, the workflow is: 
-1) load the aggregate data (.csv files)
-2) run geostatistical model (mixed effect model) or load.RDA file
-3) prepare elevation raster (load and aggregate)
-4) predict and conwtruct the isoscape
-5) export isoscape file to GIS and plot
+In summary, the workflow includes: 
+1) Loading the aggregate data (.csv files)
+2) Running the geostatistical model (mixed-effect model) or loading a pre-fitted model from .rda file
+3) Preparing the elevation raster (loading and aggregating)
+4) Making predictions to construct the isoscape
+6) Exporting the isoscape file to GIS and generating plot
 
-## Comparisons interpretation between models
-## Results
+## Comparisons interpretation between models (Eurasia Fit, Asia Fit and SE Asia Fit)
+Please refer to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
+### Results
 
 ### Overview
 
 We analyzed three sets of spaMM model outputs, each comprising a mean model (Gaussian mixed model) and a residual dispersion model (Gamma mixed model), fitted to datasets of varying sizes (375, 172, and 108 observations, respectively). All models included fixed effects for elevation (`elev`) and absolute latitude (`lat_abs`), random effects for `source_ID`, and spatial correlation structured by a Matern covariance on the longitude and latitude coordinates. The following sections summarize and compare the main findings across these models.
 
 ---
-
+```
 ### Mean Model Summaries
 
 #### Fixed Effects
@@ -128,3 +130,8 @@ These analyses demonstrate that spatially explicit mixed models are essential fo
 - **Incorporate Hierarchical or Multi-scale Structures:** Explore hierarchical or multi-scale spatial models to capture variation at different spatial resolutions (e.g., nested spatial units, regional effects).
 - **Quantify Uncertainty in Spatial Parameters:** Use Bayesian approaches or bootstrapping to better quantify uncertainty in spatial correlation and variance estimates, especially in smaller samples.
 - **Communicate Ecological and Management Implications:** Relate spatial modeling results to practical ecological questions or management decisions, highlighting areas of high uncertainty or spatial heterogeneity that may warrant focused investigation.
+
+```
+
+## Citation.
+Chornelia, A. & Hughes, A.C. (2025). 
