@@ -1,3 +1,121 @@
 # ASIA_ISOSCAPE
 
-## 1. 
+Spatial coverage : Lat = 10S - 60N, and Long 70E - 140E
+
+## 1. Set Working Directory
+
+```{r dir}
+setwd("YOUR_DIRECTORY")
+getwd()
+```
+
+## 2. Install packages and load libraries
+
+
+```{r libs}
+# install packages
+install.packages("IsoriX", dependencies = TRUE)
+
+# load library
+library(IsoriX)
+```
+
+## 3. Data
+
+Note: consists of 172 source_ID(data source)
+
+```{r data}
+# Load the data (aggregated)
+DATA <- read.csv("Asia_IsoData_agg.csv")
+DATA #(contain 172 source_ID)
+
+# turn source_ID into factor
+DATA$source_ID <- as.factor(DATA$source_ID)
+DATA$elev <- as.numeric(DATA$elev)
+DATA
+```
+Note: Check data structure. There are 7 columns: source_ID<fctr>, mean_source_value<dbl>, var_source_value<dbl>, n_source_value<int>, lat<dbl>, long<dbl>, elev<dbl>. 
+
+## 4. Fit Geostatistical Model
+
+```{r fit geostats model}
+#4.1 fit geostats models by yourself
+ASIAFIT <- isofit(data = DATA, mean_model_fix = list(elev=TRUE, lat_abs =TRUE))
+
+save(ASIAFIT, file = "ASIAFIT.rda", compress = "xz")
+load(file = "ASIAFIT.rda")
+
+#4.2 or load from the available dataset
+load(file = "AsiaIso_Fit.rda"
+
+# check the model-REFERS TO "AsiaFit.md" file for results
+summary(ASIAFIT)
+ASIAFIT
+plot(ASIAFIT)
+
+```
+## 5. Load Elevation Raster
+
+
+```{r elev raster}
+library(terra)
+library(curl)
+
+Asia_elev <-terra::rast("elevation_world_z7_eurasia_DD.tif")
+Asia_elev
+
+#plot 
+plot(Asia_elev)
+
+Asia_elev_agg <- prepraster(raster = Asia_elev, isofit = ASIAFIT, aggregation_factor = 4)
+
+plot(Asia_elev_agg)
+
+#OPTIONAL: LOAD FROM DATABASE
+Asia_elev_agg <- terra::rast("elev_Asia_z7_agg4_DD.tif")
+```
+
+## 6. Isoscape 
+
+```{r construct the isoscape}
+asiascape <- isoscape(raster = Asia_elev_agg, isofit = ASIAFIT)
+```
+
+## 7.Visualize
+
+
+```{r plot mean isoscape}
+#1
+plot(asiascape)
+
+tiff(filename = "Asia_isoscape_mean.tiff",
+     width = 1920, 
+     height = 1080, 
+     res = 300)
+plot(asiascacpe)
+dev.off()
+
+#2
+plot(asiascacpe, which = "mean_residVar")
+
+tiff(filename = "Asia_isoscape_mean_residVar.tiff",
+     width = 1920, 
+     height = 1080, 
+     res = 300)
+plot(asiascacpe, which = "mean_residVar")
+dev.off()
+
+#3
+plot(asiascacpe, which = "mean_residVar")
+
+tiff(filename = "Asia_isoscape_mean_residVar.tiff",
+     width = 1920, 
+     height = 1080, 
+     res = 300)
+plot(asiascacpe, which = "mean_residVar")
+dev.off()
+
+```
+
+
+
