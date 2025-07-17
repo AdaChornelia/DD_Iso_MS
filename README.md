@@ -20,6 +20,7 @@ to cite (APA format):
 |2 | AsiaFit.md | Summary of geostatistical model fit results for the Asia isoscape |
 |3 | SEAsiaFit.md | Summary of geostatistical model fit results for the Southeast Asia isoscape |
 |4 | R_Code_Asia_Isoscape.Rmd | R script |
+|5 | Elevation-raster-summary.md | structural raster summary for all three isoscapes |
 
 
 ## Analysis Workflow
