@@ -1,0 +1,140 @@
+# SOUTHEAST_ASIA_ISOSCAPE
+
+Spatial coverage : Lat = 5N - 32N, and Long 90E - 123E
+
+## 1. Set Working Directory
+
+```{r dir}
+setwd("YOUR_DIRECTORY")
+getwd()
+```
+
+## 2. Install packages and load libraries
+
+
+```{r libs}
+# install packages
+install.packages("IsoriX", dependencies = TRUE)
+
+# load library
+library(IsoriX)
+```
+
+## 3. Data
+
+Note: consists of 108 source_ID(data source)
+
+```{r data}
+# Load the data (aggregated)
+SEADATA <- read.csv("Asia_IsoData_agg.csv")
+SEADATA #(contain 108 source_ID)
+
+# turn source_ID into factor
+SEADATA$source_ID <- as.factor(SEADATA$source_ID)
+SEADATA$elev <- as.numeric(SEADATA$elev)
+SEADATA
+```
+Note: Check data structure. There are 7 columns: source_ID<fctr>, mean_source_value<dbl>, var_source_value<dbl>, n_source_value<int>, lat<dbl>, long<dbl>, elev<dbl>. 
+
+## 4. Fit Geostatistical Model
+
+```{r fit geostats model}
+#4.1 fit geostats models by yourself
+SEASIAFIT <- isofit(data = SEADATA, mean_model_fix = list(elev=TRUE, lat_abs =TRUE))
+
+save(SEASIAFIT, file = "SEASIAFIT.rda", compress = "xz")
+load(file = "SEASIAFIT.rda")
+
+#4.2 or load from the available dataset
+load(file = "SEAIso_Fit.rda"
+
+# check the model-REFERS TO "AsiaFit.md" file for results
+summary(SEASIAFIT)
+SEASIAFIT
+plot(SEASIAFIT)
+
+```
+## 5. Load Elevation Raster
+
+
+```{r elev raster}
+library(terra)
+library(curl)
+
+SEAsia_elev <-terra::rast("elevation_world_z7.tif")
+SEAsia_elev
+
+#plot 
+plot(SEAsia_elev)
+
+SEAsia_elev_agg <- prepraster(raster = SEAsia_elev, isofit = SEASIAFIT, aggregation_factor = 4)
+
+plot(SEAsia_elev_agg)
+
+#OPTIONAL: LOAD FROM DATABASE
+SEAsia_elev_agg <- terra::rast("elev_SEAsia_agg2_DD.tif")
+```
+Note: 
+ELevation_world_z7
+class       : SpatRaster 
+size        : 7340, 9437, 1  (nrow, ncol, nlyr)
+resolution  : 0.005245525, 0.005245525  (x, y)
+extent      : 87.74877, 137.2508, 3.250108, 41.75226  (xmin, xmax, ymin, ymax)
+coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+source      : elevation_world_z7.tif 
+name        : layer 
+min value   : -9851 
+max value   :  8090 
+
+Aggregating (elev_SEAsia_agg2_DD)
+class       : SpatRaster 
+size        : 2732, 3305, 1  (nrow, ncol, nlyr)
+resolution  : 0.01049105, 0.01049105  (x, y)
+extent      : 88.70346, 123.3764, 4.073656, 32.7352  (xmin, xmax, ymin, ymax)
+coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+source(s)   : memory
+name        :   layer 
+min value   :    0.00 
+max value   : 7121.25 
+     
+## 6. Isoscape 
+
+```{r construct the isoscape}
+seasiascape <- isoscape(raster = SEAsia_elev_agg, isofit = SEASIAFIT)
+```
+
+## 7.Visualize
+
+
+```{r plot mean isoscape}
+#1
+plot(seasiascape)
+
+tiff(filename = "SEAsia_isoscape_mean.tiff",
+     width = 1920, 
+     height = 1080, 
+     res = 300)
+plot(seasiascacpe)
+dev.off()
+
+#2
+plot(seasiascacpe, which = "mean_residVar")
+
+tiff(filename = "SEAsia_isoscape_mean_residVar.tiff",
+     width = 1920, 
+     height = 1080, 
+     res = 300)
+plot(seasiascacpe, which = "mean_residVar")
+dev.off()
+
+#3
+plot(seasiascacpe, which = "mean_residVar")
+
+tiff(filename = "SEAsia_isoscape_mean_residVar.tiff",
+     width = 1920, 
+     height = 1080, 
+     res = 300)
+plot(SEasiascacpe, which = "mean_residVar")
+dev.off()
+
+```
