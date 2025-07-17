@@ -74,6 +74,34 @@ plot(Asia_elev_agg)
 #OPTIONAL: LOAD FROM DATABASE
 Asia_elev_agg <- terra::rast("elev_Asia_z7_agg4_DD.tif")
 ```
+Note:
+elevation_world_z7_eurasia_DD
+elev_raster2
+class       : SpatRaster 
+dimensions  : 18839, 32295, 1  (nrow, ncol, nlyr)
+resolution  : 0.004087283, 0.004087283  (x, y)
+extent      : 14.00074, 145.9995, 6.500865, 83.50119  (xmin, xmax, ymin, ymax)
+coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+source      : elevation_world_z7_eurasia.tif 
+name        : elevation_world_z7_eurasia 
+min value   :                     -10879 
+max value   :                      19894 
+
+aggregate: elev_Asia_z7_agg4_DD.tif
+ user  system elapsed 
+   user  system elapsed 
+  33.00    2.61   36.18 
+class       : SpatRaster 
+size        : 4569, 4678, 1  (nrow, ncol, nlyr)
+resolution  : 0.015835, 0.015835  (x, y)
+extent      : 69.05962, 143.1357, -10.61114, 61.73896  (xmin, xmax, ymin, ymax)
+coord. ref. : lon/lat WGS 84 (EPSG:4326) 
+source(s)   : memory
+name        : elevation_world_z7_eurasia_DD 
+min value   :                         0.000 
+max value   :                      8125.438 
+
+
 
 ## 6. Isoscape 
 
