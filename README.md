@@ -5,7 +5,12 @@ Resources for Data Descriptor: Asia Isoscape Manuscript
 
 ## Read More, Citation:
 When using these sources, please cite the article below:
-"add link here"
+
+
+Chornelia, A. & Hughes, A.C. 20xx. Stable hydrogen isotope signatures in tropica; bat hair and the Asian Isoscape: A dataset to advance regional migration research. xx add link
+
+
+Chornelia, A., Lu, J., & Hughes, A.C. 20xx. 
 
 to cite (APA format):
 
