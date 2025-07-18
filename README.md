@@ -28,6 +28,9 @@ to cite (APA format):
 |5 | R_Script_Asia_Isoscape.Rmd | R markdown |
 |6 | R_Script_SEAsia_Isoscape.Rmd | R markdown |
 |7 | Elevation-raster-summary.md | structural raster summary for all three isoscapes |
+|8 | allscript.R | R script to process raw data---building the isoscape |
+
+Note: read more in IsoriX documentation for detailed explanation 
 
 
 ## Analysis Workflow
@@ -37,6 +40,7 @@ In summary, the workflow includes:
 3) Preparing the elevation raster (loading and aggregating)
 4) Making predictions to construct the isoscape
 6) Exporting the isoscape file to GIS and generating plot
+
 
 ## Comparisons interpretation between models (Eurasia Fit, Asia Fit and SE Asia Fit)
 Please refer to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
