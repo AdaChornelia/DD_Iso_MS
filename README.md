@@ -19,9 +19,10 @@ to cite (APA format):
 |1 | EurasiaFit.md | Summary of geostatistical model fit results for the Eurasia isoscape/continental|
 |2 | AsiaFit.md | Summary of geostatistical model fit results for the Asia isoscape |
 |3 | SEAsiaFit.md | Summary of geostatistical model fit results for the Southeast Asia isoscape |
-|4 | R_Script_Asia_Isoscape.Rmd | R script |
-|5 |  R_Script_SEAsia_Isoscape.Rmd | R script |
-|6 | Elevation-raster-summary.md | structural raster summary for all three isoscapes |
+|4 | R_Script_Eurasia_Isoscape.Rmd | R markdown |
+|5 | R_Script_Asia_Isoscape.Rmd | R markdown |
+|6 | R_Script_SEAsia_Isoscape.Rmd | R markdown |
+|7 | Elevation-raster-summary.md | structural raster summary for all three isoscapes |
 
 
 ## Analysis Workflow
@@ -34,6 +35,7 @@ In summary, the workflow includes:
 
 ## Comparisons interpretation between models (Eurasia Fit, Asia Fit and SE Asia Fit)
 Please refer to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
+
 ### Results
 
 ### Overview
