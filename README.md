@@ -6,14 +6,13 @@ Resources for Data Descriptor: Asia Isoscape Manuscript
 ## Read More, Citation:
 When using these sources, please cite the article below:
 
-Chornelia, A. & Hughes, A.C. 20xx. Stable hydrogen isotope signatures in tropical bat hair and the Asian Isoscape: A dataset to advance regional migration research. xx add link
 
-Chornelia, A., Lu, J., & Hughes, A.C. 20xx. Following the flight of Asian bats: stable hydrogen isotope analysis uncovers bat migration patterns, and promising future directions. Journal of Biogeography (In Revew). add link
+```
+Chornelia, A. & Hughes, A.C. 20xx. Stable hydrogen isotope signatures in tropical bat hair and the Asian Isoscape: A dataset to advance regional migration research. In Review
 
-to cite (APA format):
-```
-🦇 add here when it's published
-```
+Chornelia, A., Lu, J., & Hughes, A. C. (2025). Following the Flight of Asian Bats: Stable Hydrogen Isotope Analysis Uncovers Bat Migration Patterns, and Promising Future Directions. Journal of Biogeography, 52(11), e70063. https://doi.org/10.1111/jbi.70063
+````
+
 
 ![Deuterium](https://github.com/AdaChornelia/DD_Iso_MS/blob/main/Figures/DeuteriumSymbol.png "Deuterium")
 
@@ -30,7 +29,7 @@ to cite (APA format):
 |7 | Elevation-raster-summary.md | structural raster summary for all three isoscapes |
 |8 | allscript.R | R script to process raw data---building the isoscape |
 
-Note: read more in IsoriX documentation for detailed explanation 
+Note: read more in IsoriX documentation for a detailed explanation 
 
 
 ## Analysis Workflow
@@ -43,7 +42,7 @@ In summary, the workflow includes:
 
 
 ## Comparisons interpretation between models (Eurasia Fit, Asia Fit and SE Asia Fit)
-Please refer to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
+Please refers to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
 
 ### Results
 
@@ -147,4 +146,4 @@ These analyses demonstrate that spatially explicit mixed models are essential fo
 ```
 
 ## Citation.
-Chornelia, A. & Hughes, A.C. (2025). 
+Chornelia, A., Lu, J., & Hughes, A. C. (2025). Following the Flight of Asian Bats: Stable Hydrogen Isotope Analysis Uncovers Bat Migration Patterns, and Promising Future Directions. Journal of Biogeography, 52(11), e70063. https://doi.org/10.1111/jbi.70063
