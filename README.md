@@ -1,6 +1,5 @@
 # Isoscape-Data Descriptor
 
-![ddms](https://github.com/AdaChornelia/DD_Iso_MS/blob/main/Figures/ddms.jpg "ddms")
 
 ## About
 Resources for Data Descriptor: Asia Isoscape Manuscript
