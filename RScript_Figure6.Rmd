@@ -1,0 +1,187 @@
+# General Information
+
+Code for generating figure, high res, and combining several plots
+
+# Eurasia Geostat Model
+
+
+## 3. Data
+
+```{r}
+data_Eurasia <- read.csv("EuroIsoData_agg.csv")
+data_Eurasia
+
+data_Eurasia$source_ID <- as.factor(data_Eurasia$source_ID)
+data_Eurasia$elev <- as.numeric(data_Eurasia$elev)
+data_Eurasia
+```
+
+## 4. fit geostat model
+
+```{r}
+#install.packages("RSpectra")
+
+library(RSpectra)
+
+#fit geostats mixed model
+Eurasiafit <- isofit(data = data_Eurasia, mean_model_fix = list(elev = TRUE, lat_abs = TRUE))
+
+
+summary(Eurasiafit)
+Eurasiafit
+plot(Eurasiafit)
+```
+## 5. plot
+
+```{r}
+#### plot this for higher resolution (figure 6), change width = 4800 or 3600 to reduce white space
+png(filename = "Eurasiafit_meanfit_DD_1_testhigh.png", width = 3000, height = 3400, res = 600) 
+plot(Eurasiafit$mean_fit)
+# Add "1a)" label to the left side
+dev.off()
+
+#### plot this for higher resolution (figure 6), change width = 4800 or 3600 to reduce white space
+png(filename = "Eurasiafit_dispfit_DD_1_testhigh.png", width = 3000, height = 3400, res = 600) 
+plot(Eurasiafit$disp_fit)
+dev.off()
+```
+
+# Asia Geostat Model
+
+## 3. Data
+
+```{r}
+data_Asia <- read.csv("Asia_IsoData_agg.csv")
+data_Asia
+
+data_Asia$source_ID <- as.factor(data_Asia$source_ID)
+data_Asia$elev <- as.numeric(data_Asia$elev)
+data_Asia
+```
+
+## 4. Fit geostat model
+
+```{r}
+#install.packages("RSpectra")
+
+#library(RSpectra)
+
+#fit geostats mixed model
+Asiafit <- isofit(data = data_Asia, mean_model_fix = list(elev = TRUE, lat_abs = TRUE))
+
+
+summary(Asiafit)
+Asiafit
+plot(Asiafit)
+```
+
+## 5. plot
+
+```{r}
+#### plot this for higher resolution (figure 6), change width = 4800 or 3600 to reduce white space
+png(filename = "Asiafit_meanfit_DD_1_testhigh.png", width = 3000, height = 3400, res = 600) 
+plot(Asiafit$mean_fit)
+dev.off()
+
+#### plot this for higher resolution (figure 6), change width = 4800 or 3600 to reduce white space
+png(filename = "Asiafit_dispfit_DD_1_testhigh.png", width = 3000, height = 3400, res = 600) 
+plot(Asiafit$disp_fit)
+dev.off()
+```
+
+# Southeast Asia Geostat Model
+
+## 3. Data
+
+```{r}
+data_SEAsia <- read.csv("SEA_IsoData_agg.csv")
+data_SEAsia
+
+data_SEAsia$source_ID <- as.factor(data_SEAsia$source_ID)
+data_SEAsia$elev <- as.numeric(data_SEAsia$elev)
+data_SEAsia
+```
+
+
+## 4. Fit geostat model
+
+```{r}
+#install.packages("RSpectra")
+
+#library(RSpectra)
+
+#fit geostats mixed model
+SEAsiafit <- isofit(data = data_SEAsia, mean_model_fix = list(elev = TRUE, lat_abs = TRUE))
+
+
+summary(SEAsiafit)
+SEAsiafit
+plot(SEAsiafit)
+```
+
+## 5. plot
+
+```{r}
+#### plot this for higher resolution (figure 6), change width = 4800 or 3600 to reduce white space
+png(filename = "SEAsiafit_meanfit_DD_1_testhigh.png", width = 3000, height = 3400, res = 600) 
+plot(SEAsiafit$mean_fit)
+dev.off()
+
+#### plot this for higher resolution (figure 6), change width = 4800 or 3600 to reduce white space
+png(filename = "SEAsiafit_dispfit_DD_1_testhigh.png", width = 3000, height = 3400, res = 600) 
+plot(SEAsiafit$disp_fit)
+dev.off()
+```
+
+## COMBINED THEM ALL 
+
+
+```{r}
+install.packages("cowplot")
+install.packages("gridGraphics")
+install.packages("gridExtra")
+install.packages("grid")
+library(cowplot)
+library(gridGraphics)
+library(gridExtra)
+
+library(magick)
+
+# Read PNG files
+img1a <- image_read("Eurasiafit_meanfit_DD_1_testhigh.png")
+img1b <- image_read("Eurasiafit_dispfit_DD_1_testhigh.png")
+img2a <- image_read("Asiafit_meanfit_DD_1_testhigh.png")
+img2b <- image_read("Asiafit_dispfit_DD_1_testhigh.png")
+img3a <- image_read("SEAsiafit_meanfit_DD_1_testhigh.png")
+img3b <- image_read("SEAsiafit_dispfit_DD_1_testhigh.png")
+
+# Add labels to each image
+img1a <- image_annotate(img1a, "1a)", location = "+50+50", size = 140, color = "black", font = "Helvetica", weight = 700)
+img1a
+img1b <- image_annotate(img1b, "1b)", location = "+50+50", size = 140, color = "black", font = "Helvetica", weight = 700)
+img1b
+img2a <- image_annotate(img2a, "2a)", location = "+50+50", size = 140, color = "black", font = "Helvetica", weight = 700)
+img2a
+img2b <- image_annotate(img2b, "2b)", location = "+50+50", size = 140, color = "black", font = "Helvetica", weight = 700)
+img2b
+img3a <- image_annotate(img3a, "3a)", location = "+50+50", size = 140, color = "black", font = "Helvetica", weight = 700)
+img3a
+img3b <- image_annotate(img3b, "3b)", location = "+50+50", size = 140, color = "black", font = "Helvetica", weight = 700)
+img3b
+
+# Combine images in 3 rows x 2 columns
+row1 <- c(img1a, img1b) %>% image_append(stack = FALSE)
+row2 <- c(img2a, img2b) %>% image_append(stack = FALSE)
+row3 <- c(img3a, img3b) %>% image_append(stack = FALSE)
+
+combined <- c(row1, row2, row3) %>% image_append(stack = TRUE)
+
+# Save combined image
+image_write(combined, "Figure_6_combined_6plots_publication.png")
+
+# Save as pdf
+image_write(combined, "Figure_6_combined_6plots_publication.pdf", format = "pdf")
+
+```
+Done
+
