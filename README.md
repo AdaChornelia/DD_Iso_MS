@@ -31,7 +31,7 @@ Chornelia, A., Lu, J., & Hughes, A. C. (2025). Following the Flight of Asian Bat
 |7 | Elevation-raster-summary.md | structural raster summary for all three isoscapes |
 |8 | allscript.R | R script to process raw data---building the isoscape |
 |9 | RScript_Figure6.Rmd | R markdown |
-|10 | RScript_CombinedFigs.R | R script to combined png files in R, tidy and neat, publication-ready (and add the label |
+|10 | RScript_CombinedFigs.R | R script to combine PNG files in R, a tidy and neat, publication-ready (and add the label) |
 
 Note: read more in IsoriX documentation for a detailed explanation 
 
@@ -40,13 +40,13 @@ Note: read more in IsoriX documentation for a detailed explanation
 In summary, the workflow includes: 
 1) Loading the aggregate data (.csv files)
 2) Running the geostatistical model (mixed-effect model) or loading a pre-fitted model from .rda file
-3) Preparing the elevation raster (loading and aggregating)
+3) Preparing the elevation raster (load the elevation file (raster) and aggregate)
 4) Making predictions to construct the isoscape
-6) Exporting the isoscape file to GIS and generating plot
+6) Exporting the isoscape file to GIS and generating a plot
 
 
-## Comparisons interpretation between models (Eurasia Fit, Asia Fit and SE Asia Fit)
-Please refers to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
+## Comparisons interpretation between models (Eurasia Fit, Asia Fit, and SE Asia Fit)
+Please refer to the files: EurasiaFit.md, AsiaFit.md, and SEAsiaFit.md
 
 ### Results
 
